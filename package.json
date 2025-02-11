@@ -4,7 +4,11 @@
   "description": "Este projeto serve como ponto de partida para o desenvolvimento de aplicações utilizando os *frameworks* de *backend* e *frontend* escolhidos pela equipe.",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js"
+    "test": "cucumber-js",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "keywords": [],
   "author": "",
