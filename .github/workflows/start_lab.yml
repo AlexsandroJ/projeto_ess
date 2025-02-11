@@ -1,11 +1,17 @@
 # Nome do fluxo de trabalho
 name: Deploy EC2 Ubuntu
 
-# Gatilho: Quando houver um push na branch principal
 on:
-  push:
-    branches:
-      - main 
+  workflow_dispatch:  # Evento manual de acionamento da pipeline
+    inputs:
+      environment:
+        description: 'Environment to deploy to'  # Descrição do input
+        required: true
+        default: 'staging'  # Valor padrão
+      version:
+        description: 'Version of the app to deploy'
+        required: true
+        default: 'v1.0'
 jobs:
   # Definição do job
   deploy:
@@ -24,9 +30,13 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_EC2_KEY_ID }}  # ID da chave de acesso AWS
           aws-secret-access-key: ${{ secrets.AWS_EC2_SECRET_ACCESS_KEY }}  # Chave secreta de acesso AWS
           aws-region: us-east-1  # Região da AWS (pode ser alterada conforme necessário)
-      # Paso 3 : Start Instance
+      # Passo 3 : Iniciar a Instancia
       - name: Start EC2 Instance
         run: |
           aws ec2 start-instances --instance-ids i-068d63f5f422e2a8b
           echo "Instance started successfully."
-
+      # Passo 4: Mostrar o IP 
+      - name: Show the public IP address of the machine
+        run: |
+          PUBLIC_IP=$(curl -s http://checkip.amazonaws.com)
+          echo "The public IP address of the machine is: $PUBLIC_IP"
