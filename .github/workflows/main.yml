@@ -31,9 +31,8 @@ jobs:
         with:
           security-group-id: "sg-0100ddcd37efc3d6c"
           subnet-id: "subnet-09a35a2abd797dbf0"
-          image-id: "ami-04b4f1a9cf54c11d0"
+          image-id: "ami-04b4f1a9cf54c11d0" 
           instance-type: "t2.micro"
-          instance-profile: "TruemarkEC2RoleforSSM"
           region: "us-east-1"
           user-data: |
             #!/bin/bash
