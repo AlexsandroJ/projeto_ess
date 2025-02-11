@@ -27,15 +27,14 @@ jobs:
 
       # Passo 3: Iniciar uma instância EC2 Ubuntu
       - name: Launch EC2 instance
-        run: |
-          INSTANCE_ID=$(aws ec2 run-instances \
-          image-id ami-0c55b159cbfafe1f0 \  # ID da imagem AMI Ubuntu
-          count 1 \
-          instance-type t2.micro \  # Tipo da instância
-          key-name lab_git \  # Nome do par de chaves AWS
-          query 'Instances[0].InstanceId' \  # Consultar o ID da instância
-          output text)
-          echo "INSTANCE_ID=$INSTANCE_ID" >> $GITHUB_ENV  # Salvar o ID da instância nas variáveis de ambiente
+        uses: truemark/aws-ec2-run-instance-action@v5
+        with:
+          security-group-id: "sg-0100ddcd37efc3d6c"
+          subnet-id: "subnet-09a35a2abd797dbf0"
+          image-id: "ami-04b4f1a9cf54c11d0"
+          instance-type: "t2.micro"
+          region: "us-east-1"
+         
 
       # Passo 4: Esperar a instância entrar no estado de execução
       - name: Wait for instance to be in running state
