@@ -1,5 +1,5 @@
 # Nome do fluxo de trabalho
-name: Deploy EC2 Ubuntu
+name: Stop Instance EC2 Ubuntu
 
 on:
   workflow_dispatch:  # Evento manual de acionamento da pipeline
@@ -34,4 +34,4 @@ jobs:
       - name: Stop EC2 Instance
         run: |
           aws ec2 Stop-instances --instance-ids i-068d63f5f422e2a8b
-          echo "Instance started successfully."
+          echo "Instance stoped successfully."
