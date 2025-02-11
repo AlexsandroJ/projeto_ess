@@ -17,7 +17,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_EC2_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.EC2_SSH_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_EC2_SSH_KEY }}
           aws-region: us-east-1  # Escolha a região que preferir
 
       - name: Launch EC2 instance
