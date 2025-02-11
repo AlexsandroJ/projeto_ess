@@ -1,5 +1,5 @@
 # Nome do fluxo de trabalho
-name: Deploy EC2 Ubuntu
+name: Start Instance EC2 Ubuntu
 
 on:
   workflow_dispatch:  # Evento manual de acionamento da pipeline
@@ -38,5 +38,8 @@ jobs:
       # Passo 4: Mostrar o IP 
       - name: Show the public IP address of the machine
         run: |
-          PUBLIC_IP=$(curl -s http://checkip.amazonaws.com)
-          echo "The public IP address of the machine is: $PUBLIC_IP"
+          PUBLIC_IP=$(aws ec2 describe-instances \
+            --instance-ids i-068d63f5f422e2a8b \
+            --query "Reservations[].Instances[].[PublicIpAddress]" \
+            --output text)
+          echo "O IP público da instância EC2 é: $PUBLIC_IP"
