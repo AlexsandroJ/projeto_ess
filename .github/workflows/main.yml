@@ -45,6 +45,7 @@ jobs:
 
       # Passo 5: Exibir detalhes da instância
       - name: Output instance details
+      
         run: |
           aws ec2 describe-instances --instance-ids ${{ env.INSTANCE_ID }}  # Descrever a instância e exibir detalhes
 
