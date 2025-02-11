@@ -1,40 +1,50 @@
+# Nome do fluxo de trabalho
 name: Deploy EC2 Ubuntu
 
+# Gatilho: Quando houver um push na branch principal
 on:
   push:
     branches:
       - main
 
 jobs:
+  # Definição do job
   deploy:
+    # Ambiente onde o job será executado
     runs-on: ubuntu-latest
 
     steps:
+      # Passo 1: Fazer checkout do código do repositório
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Passo 2: Configurar as credenciais da AWS
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_EC2_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_EC2_SSH_KEY }}
-          aws-region: us-east-1  # Escolha a região que preferir
+          aws-access-key-id: ${{ secrets.AWS_EC2_KEY_ID }}  # ID da chave de acesso AWS
+          aws-secret-access-key: ${{ secrets.AWS_EC2_SSH_KEY }}  # Chave secreta de acesso AWS
+          aws-region: us-east-1  # Região da AWS (pode ser alterada conforme necessário)
 
+      # Passo 3: Iniciar uma instância EC2 Ubuntu
       - name: Launch EC2 instance
         run: |
           INSTANCE_ID=$(aws ec2 run-instances \
-            --image-id ami-0c55b159cbfafe1f0 \  # AMI Ubuntu
+            --image-id ami-0c55b159cbfafe1f0 \  # ID da imagem AMI Ubuntu
             --count 1 \
-            --instance-type t2.micro \
-            --key-name lab_git \
-            --query 'Instances[0].InstanceId' \
+            --instance-type t2.micro \  # Tipo da instância
+            --key-name lab_git \  # Nome do par de chaves AWS
+            --query 'Instances[0].InstanceId' \  # Consultar o ID da instância
             --output text)
-          echo "INSTANCE_ID=$INSTANCE_ID" >> $GITHUB_ENV
+          echo "INSTANCE_ID=$INSTANCE_ID" >> $GITHUB_ENV  # Salvar o ID da instância nas variáveis de ambiente
 
+      # Passo 4: Esperar a instância entrar no estado de execução
       - name: Wait for instance to be in running state
         run: |
-          aws ec2 wait instance-running --instance-ids ${{ env.INSTANCE_ID }}
+          aws ec2 wait instance-running --instance-ids ${{ env.INSTANCE_ID }}  # Aguardar até que a instância esteja em execução
 
+      # Passo 5: Exibir detalhes da instância
       - name: Output instance details
         run: |
-          aws ec2 describe-instances --instance-ids ${{ env.INSTANCE_ID }}
+          aws ec2 describe-instances --instance-ids ${{ env.INSTANCE_ID }}  # Descrever a instância e exibir detalhes
+
