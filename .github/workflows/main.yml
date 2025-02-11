@@ -23,7 +23,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_EC2_KEY_ID }}  # ID da chave de acesso AWS
-          aws-secret-access-key: ${{ secrets.AWS_EC2_SSH_KEY }}  # Chave secreta de acesso AWS
+          aws-secret-access-key: ${{ secrets.AWS_EC2_SECRET_ACCESS_KEY }}  # Chave secreta de acesso AWS
           aws-region: us-east-1  # Região da AWS (pode ser alterada conforme necessário)
 
       # Passo 3: Iniciar uma instância EC2 Ubuntu
