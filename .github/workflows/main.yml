@@ -5,8 +5,7 @@ name: Deploy EC2 Ubuntu
 on:
   push:
     branches:
-      - main
-
+      - main 
 jobs:
   # Definição do job
   deploy:
