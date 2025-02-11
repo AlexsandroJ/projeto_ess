@@ -7,7 +7,7 @@ on:
       environment:
         description: 'Environment to deploy to'  # Descrição do input
         required: true
-        default: 'staging'  # Valor padrão
+        default: 'stoping'  # Valor padrão
       version:
         description: 'Version of the app to deploy'
         required: true
@@ -33,5 +33,5 @@ jobs:
       # Passo 3 : Desligar a Instancia
       - name: Stop EC2 Instance
         run: |
-          aws ec2 Stop-instances --instance-ids i-068d63f5f422e2a8b
+          aws ec2 stop-instances --instance-ids i-068d63f5f422e2a8b
           echo "Instance stoped successfully."
