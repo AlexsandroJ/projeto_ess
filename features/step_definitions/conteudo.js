@@ -30,21 +30,21 @@ Then('devo ver a seguinte disponibilidade:', function (dataTable) {
 Given('os seguintes filmes|séries existem:', function (dataTable) {
     // Write code here that turns the phrase above into concrete actions
     movies = dataTable.hashes();
-    console.log("Exemplo de exibição de dados:\n");
+    console.log("os seguintes filmes|séries existem:\n");
     movies.forEach(element => {
-        console.log("Título: ",element.Título," Nota: ",element.Nota," Ano: ",element.Ano," Plataforma: ",element.Plataforma," Capa: ",element.Capa );
+        console.log("Título: ",element.Título," Ano: ",element.Ano," Plataforma: ",element.Plataforma );
       });
 });
 
 When('adiciono um novo filme|série com título {string}, ano {string}, nota {string}, capa {string} e plataforma {string}', function (string, string2, string3, string4, string5) {
     // Write code here that turns the phrase above into concrete actions
-    console.log(` ${string} ${string2} ${string3} ${string4} ${string5}`);
+    console.log(` Titulo: ${string} Ano: ${string2} Nota: ${string3} Capa: ${string4} Plataforma: ${string5}`);
 });
 
 Then('os seguintes filmes|séries devem existir:', function (dataTable) {
     // Write code here that turns the phrase above into concrete actions
     movies = dataTable.hashes();
-    console.log("Exemplo de exibição de dados:\n");
+    console.log("os seguintes filmes|séries devem existir:\n");
     movies.forEach(element => {
         console.log("Título: ",element.Título," Nota: ",element.Nota," Ano: ",element.Ano," Plataforma: ",element.Plataforma," Capa: ",element.Capa );
       });
@@ -77,9 +77,9 @@ When('editar o review de {string} para ter avaliação {string} e comentário {s
 Then('os seguintes reviews devem existir:', function (dataTable) {
     // Write code here that turns the phrase above into concrete actions
     movies = dataTable.hashes();
-    console.log("Exemplo de exibição de dados:\n");
+    console.log("os seguintes reviews devem existir:\n");
     movies.forEach(element => {
-        console.log("Título: ",element.Titulo," Avaliação: ",element['Avaliação']," Comentário: ",element['Comentário'] );
+        console.log("Título: ",element.Título," Avaliação: ",element['Avaliação']," Comentário: ",element['Comentário'] );
       });
 });
 
@@ -93,9 +93,9 @@ When('adicionar um novo review para {string} com avaliação {string} e comentá
 Given('os seguintes reviews existem:', function (dataTable) {
     // Write code here that turns the phrase above into concrete actions
     movies = dataTable.hashes();
-    console.log("Exemplo de exibição de dados:\n");
+    console.log("os seguintes reviews existem:\n");
     movies.forEach(element => {
-        console.log("Título: ",element.Titulo," Avaliação: ",element['Avaliação']," Comentário: ",element['Comentário'] );
+        console.log("Título: ",element.Título," Avaliação: ",element['Avaliação']," Comentário: ",element['Comentário'] );
       });
 });
 
