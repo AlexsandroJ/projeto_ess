@@ -2,10 +2,10 @@ Feature: Conteudo
 
     Scenario: Exibir onde os filmes|séries estão disponíveis
         Given os seguintes filmes|séries existem:
-            | Título                 | Nota | Ano  | Capa |
-            | Um Sonho de Liberdade  | 7.1  | 1994 | link |
-            | O Poderoso Chefão      | 8.1  | 1972 | link |
-            | O Cavaleiro das Trevas | 7.5  | 2008 | link |
+            | Título                 | Nota | Ano  | Plataforma   | Capa |
+            | Um Sonho de Liberdade  | 7.1  | 1994 | Netflix      | link |
+            | O Poderoso Chefão      | 8.1  | 1972 | Amazon Prime | link |
+            | O Cavaleiro das Trevas | 7.5  | 2008 | HBO Max      | link |
         When exibe a disponibilidade dos filmes|séries
         Then devo ver a seguinte disponibilidade:
             | Título                 | Nota | Ano  | Plataforma   | Capa |
@@ -44,15 +44,15 @@ Feature: Conteudo
 
     Scenario: Remover um filme|série
         Given os seguintes filmes|séries existem:
-            | Título                 | Nota | Ano  | Capa |
-            | Um Sonho de Liberdade  | 7.1  | 1994 | link |
-            | O Poderoso Chefão      | 8.1  | 1972 | link |
-            | O Cavaleiro das Trevas | 7.5  | 2008 | link |
+            | Título                 | Nota | Ano  | Plataforma   | Capa |
+            | Um Sonho de Liberdade  | 7.1  | 1994 | Netflix      | link |
+            | O Poderoso Chefão      | 8.1  | 1972 | Amazon Prime | link |
+            | O Cavaleiro das Trevas | 7.5  | 2008 | HBO Max      | link |
         When remover o filme|série com título "O Poderoso Chefão"
         Then os seguintes filmes|séries devem existir:
-            | Título                 | Nota | Ano  | Capa |
-            | Um Sonho de Liberdade  | 7.1  | 1994 | link |
-            | O Cavaleiro das Trevas | 7.5  | 2008 | link |
+            | Título                 | Nota | Ano  | Plataforma   | Capa |
+            | Um Sonho de Liberdade  | 7.1  | 1994 | Netflix      | link |
+            | O Cavaleiro das Trevas | 7.5  | 2008 | HBO Max      | link |
 
     Scenario: Editar um review existente
         Given os seguintes reviews criadas pelo usuário existem:
