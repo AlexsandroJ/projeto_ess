@@ -7,7 +7,7 @@ on:
       environment:
         description: 'Environment to deploy to'  # Descrição do input
         required: true
-        default: 'staging'  # Valor padrão
+        default: 'start'  # Valor padrão
       version:
         description: 'Version of the app to deploy'
         required: true
@@ -42,4 +42,4 @@ jobs:
             --instance-ids i-068d63f5f422e2a8b \
             --query "Reservations[].Instances[].[PublicIpAddress]" \
             --output text)
-          echo "O IP público da instância EC2 é: $PUBLIC_IP"
+          echo "O IP público da instância EC2 é: http://$PUBLIC_IP"
