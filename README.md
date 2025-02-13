@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next Cucumber 
 
-## Getting Started
+## 1 Instalar Git
 
-First, run the development server:
+Windows:
+Acesse o site oficial do [Git](https://git-scm.com)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Baixe o instalador para Windows.
+
+Execute o instalador e siga as instruções na tela, mantendo as configurações padrão recomendadas.
+
+macOS:
+Você pode instalar o Git usando o Homebrew.
+
+Terminal
+```
+brew install git
+```
+Linux:
+No Ubuntu ou distribuições baseadas em Debian:
+
+Terminal
+```
+sudo apt-get update
+sudo apt-get install git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 2. Instalar Node.js e npm
+Node.js é um ambiente de execução de JavaScript, e npm (Node Package Manager) é o gerenciador de pacotes padrão para Node.js, usado para instalar bibliotecas e ferramentas de desenvolvimento.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Windows e macOS:
+Acesse o site oficial do [Node.js](https://nodejs.org)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Baixe o instalador para o seu sistema operacional (recomendo a versão LTS).
 
-## Learn More
+Execute o instalador e siga as instruções na tela, mantendo as configurações padrão recomendadas.
 
-To learn more about Next.js, take a look at the following resources:
+Linux:
+No Ubuntu ou distribuições baseadas em Debian:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Terminal
+```
+sudo apt-get update
+sudo apt-get install -y nodejs
+sudo apt-get install -y npm
+```
+Terminal
+```
+sudo dnf install nodejs
+sudo dnf install npm
+```
+## 3. Clonar o Repositório do Projeto
+Usando o Git, você pode clonar o repositório do seu projeto para obter uma cópia local.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Terminal
+```
+git clone https://github.com/AlexsandroJ/projeto_ess.git
+```
+## 4. Navegar até o Diretório do Projeto
+Depois de clonar o repositório, navegue até o diretório do projeto.
 
-## Deploy on Vercel
+Terminal
+```
+cd projeto_ess
+```
+## 5. Instalar as Dependências do Projeto
+Use o npm para instalar todas as dependências listadas no arquivo package.json do projeto.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Terminal
+```
+npm install
+```
+## 6. Iniciar os testes do Projeto
+Uma vez que as dependências estejam instaladas, você pode iniciar os testes do projeto.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Terminal
+```
+npm test
+```
+### Link Tutorial [cucumber.js](https://cucumber.io/docs/guides/10-minute-tutorial/?lang=javascript)
+ 
+### Funções para testes da features em features/step_definitions/stepdefs.js
+#### Após adicionar novas features o cucumber gera exemplos de funções para testes no terminal, apenas copiar e colocar no arquivo correto em features/step_definitions/ o cucumber mapeia os textos das features nas funções de testes
+
+## 7. Nextjs
+Com os testes concluidos agora é a vez de rodar a aplicação
+
+Iniciar modo de desenvolvimento
+Terminal
+```
+npm run dev
+```
+
+Iniciar construção da aplicação
+Terminal
+```
+npm run build
+```
+
+Iniciar a aplicação em modo de produçao
+Terminal
+```
+npm start
+```
