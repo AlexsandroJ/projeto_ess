@@ -100,6 +100,7 @@ npm run build
 ```
 
 Iniciar a aplicação em modo de produçao
+
 Terminal
 ```
 npm start
