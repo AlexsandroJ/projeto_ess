@@ -105,3 +105,8 @@ Terminal
 ```
 npm start
 ```
+
+Acesse para visualizar a aplicação
+```
+http://localhost:3000
+```
