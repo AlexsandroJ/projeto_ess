@@ -86,12 +86,14 @@ npm test
 Com os testes concluidos agora é a vez de rodar a aplicação
 
 Iniciar modo de desenvolvimento
+
 Terminal
 ```
 npm run dev
 ```
 
 Iniciar construção da aplicação
+
 Terminal
 ```
 npm run build
