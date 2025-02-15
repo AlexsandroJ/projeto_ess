@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Um Sonho de Liberdade",
+    "ratingAverage": 7.1,
+    "releaseYear": 1994,
+    "platform": "Netflix",
+    "cover": "link"
+  },
+  {
+    "id": 2,
+    "title": "O Poderoso Chefão",
+    "ratingAverage": 8.1,
+    "releaseYear": 1972,
+    "platform": "Amazon Prime",
+    "cover": "link"
+  },
+  {
+    "id": 3,
+    "title": "O Cavaleiro das Trevas",
+    "ratingAverage": 7.5,
+    "releaseYear": 2008,
+    "platform": "HBO Max, Disney+",
+    "cover": "link"
+  }
+]
