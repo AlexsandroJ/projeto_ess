@@ -1,6 +1,18 @@
-const { Given, When, Then } = require('@cucumber/cucumber');
-const fs = require('fs');
+import { Given, When, Then } from '@cucumber/cucumber';
+
+import fs from 'fs';
 const filePath = "test.json";
+
+import {
+    getAllMovies,
+    addMovie,
+    updateMovie, 
+    deleteMovie, 
+    getAllReviewsForMovie, 
+    updateReview,
+    deleteReview,
+    addReview
+} from '../../src/conteudo.js';
 
 const reviews = [
     {
@@ -57,44 +69,6 @@ function news_test(data) {
     }
 }
 
-function  getAllMovies() {
-    try {
-        const dadosBrutos = fs.readFileSync(filePath, 'utf8');
-        const data = JSON.parse(dadosBrutos);
-        //console.log(dados);
-        return data;
-    } catch (erro) {
-        console.error('Erro ao ler o arquivo:', erro);
-    }
-}
-
-function addMovie(movie) {
-    try {
-        const data = getAllMovies();
-        data.push(movie);
-        //console.log(data);
-        const dadosJSON = JSON.stringify(data, null, 2); // 'null' e '2' são usados para formatar o JSON com indentação
-        fs.writeFileSync(filePath, dadosJSON, 'utf8');
-    } catch (erro) {
-        console.error('Erro ao escrever no arquivo:', erro);
-    }
-}
-
-function updateMovie(param, updateData) {
-    try {
-        const data = getAllMovies();
-        data.forEach(element => {
-            if (element.title == param) {
-                element.platform = updateData;
-            }
-        });
-        const dadosJSON = JSON.stringify(data, null, 2); // 'null' e '2' são usados para formatar o JSON com indentação
-        fs.writeFileSync(filePath, dadosJSON, 'utf8');
-    } catch (erro) {
-        console.error('Erro ao escrever no arquivo:', erro);
-    }
-}
-
 function comparar_data(data, data2) {
     if (data.length == data2.length) {
         let cont = 0;
@@ -111,76 +85,6 @@ function comparar_data(data, data2) {
         }
     } else {
         console.log('Não\n');
-    }
-}
-
-function deleteMovie(title) {
-    try {
-        const data = getAllMovies();
-        const index = data.findIndex(element => element.title === title);
-        if (index !== -1) {
-            // Remover o item do array usando splice
-            data.splice(index, 1);
-        }
-        const dadosJSON = JSON.stringify(data, null, 2); // 'null' e '2' são usados para formatar o JSON com indentação
-
-        fs.writeFileSync(filePath, dadosJSON, 'utf8');
-    } catch (erro) {
-        console.error('Erro ao escrever no arquivo:', erro);
-    }
-}
-
-function getAllReviewsForMovie() {
-    try {
-        const dadosBrutos = fs.readFileSync(filePath, 'utf8');
-        const data = JSON.parse(dadosBrutos);
-        //console.log(dados);
-        return data;
-    } catch (erro) {
-        console.error('Erro ao ler o arquivo:', erro);
-    }
-}
-
-function updateReview(param, updateData) {
-    try {
-        const data = getAllReviewsForMovie();
-        data.forEach(element => {
-            if (element.title == param) {
-                element.reviewText = updateData;
-            }
-        });
-        const dadosJSON = JSON.stringify(data, null, 2); // 'null' e '2' são usados para formatar o JSON com indentação
-        fs.writeFileSync(filePath, dadosJSON, 'utf8');
-    } catch (erro) {
-        console.error('Erro ao escrever no arquivo:', erro);
-    }
-}
-
-function deleteReview(title) {
-    try {
-        const data = getAllReviewsForMovie();
-        const index = data.findIndex(element => element.title === title);
-        if (index !== -1) {
-            // Remover o item do array usando splice
-            data.splice(index, 1);
-        }
-        const dadosJSON = JSON.stringify(data, null, 2); // 'null' e '2' são usados para formatar o JSON com indentação
-
-        fs.writeFileSync(filePath, dadosJSON, 'utf8');
-    } catch (erro) {
-        console.error('Erro ao escrever no arquivo:', erro);
-    }
-}
-
-function addReview(review) {
-    try {
-        const data = getAllReviewsForMovie();
-        data.push(review);
-        //console.log(data);
-        const dadosJSON = JSON.stringify(data, null, 2); // 'null' e '2' são usados para formatar o JSON com indentação
-        fs.writeFileSync(filePath, dadosJSON, 'utf8');
-    } catch (erro) {
-        console.error('Erro ao escrever no arquivo:', erro);
     }
 }
 
@@ -260,7 +164,7 @@ Then('os seguintes reviews devem existir:', function (dataTable) {
     comparar_data(dataTableNew, data);
 });
 
-When('adicionar um novo review para {string} com rating {string} e reviewText {string}', function (string, string2,string3) {
+When('adicionar um novo review para {string} com rating {string} e reviewText {string}', function (string, string2, string3) {
     news_test(reviews);
     const data = {
         id: 3,

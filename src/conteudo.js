@@ -1,37 +1,110 @@
-//const data = require('../tests/test.json');
-const data = require('../features/step_definitions/test.json');
-const fs = require('fs');
+
+import fs from 'fs';
 const filePath = "test.json";
 
-
-/*
-export default class Movie {
-    constructor(movieId, title, releaseYear, platforms, genres, director, cast, durationMinutes, ratingAverage, reviewCount, cover) {
-      this.movieId = movieId;
-      this.title = title;
-      this.releaseYear = releaseYear;
-      this.platforms = platforms;
-      this.genres = genres;
-      this.director = director;
-      this.cast = cast;
-      this.durationMinutes = durationMinutes;
-      this.ratingAverage = ratingAverage;
-      this.reviewCount = reviewCount;
-      this.cover = cover;
+export function getAllMovies() {
+    try {
+        const dadosBrutos = fs.readFileSync(filePath, 'utf8');
+        const data = JSON.parse(dadosBrutos);
+        //console.log(dados);
+        return data;
+    } catch (erro) {
+        console.error('Erro ao ler o arquivo:', erro);
     }
-
-    // Método para exibir informações sobre o filme
-    displayInfo() {
-      console.log(`Título: ${this.title}`);
-      console.log(`Ano de Lançamento: ${this.releaseYear}`);
-      console.log(`Plataformas: ${this.platforms.join(', ')}`);
-      console.log(`Gêneros: ${this.genres.join(', ')}`);
-      console.log(`Diretor: ${this.director}`);
-      console.log(`Elenco: ${this.cast.join(', ')}`);
-      console.log(`Duração: ${this.durationMinutes} minutos`);
-      console.log(`Avaliação Média: ${this.ratingAverage}`);
-      console.log(`Quantidade de Avaliações: ${this.reviewCount}`);
-      console.log(`Capa: ${this.cover}`);
+}
+export function addMovie(movie) {
+    try {
+        const data = getAllMovies();
+        data.push(movie);
+        //console.log(data);
+        const dadosJSON = JSON.stringify(data, null, 2); // 'null' e '2' são usados para formatar o JSON com indentação
+        fs.writeFileSync(filePath, dadosJSON, 'utf8');
+    } catch (erro) {
+        console.error('Erro ao escrever no arquivo:', erro);
     }
-  }
-  */
+}
+
+export function updateMovie(param, updateData) {
+    try {
+        const data = getAllMovies();
+        data.forEach(element => {
+            if (element.title == param) {
+                element.platform = updateData;
+            }
+        });
+        const dadosJSON = JSON.stringify(data, null, 2); // 'null' e '2' são usados para formatar o JSON com indentação
+        fs.writeFileSync(filePath, dadosJSON, 'utf8');
+    } catch (erro) {
+        console.error('Erro ao escrever no arquivo:', erro);
+    }
+}
+
+export function deleteMovie(title) {
+    try {
+        const data = getAllMovies();
+        const index = data.findIndex(element => element.title === title);
+        if (index !== -1) {
+            // Remover o item do array usando splice
+            data.splice(index, 1);
+        }
+        const dadosJSON = JSON.stringify(data, null, 2); // 'null' e '2' são usados para formatar o JSON com indentação
+
+        fs.writeFileSync(filePath, dadosJSON, 'utf8');
+    } catch (erro) {
+        console.error('Erro ao escrever no arquivo:', erro);
+    }
+}
+
+export function getAllReviewsForMovie() {
+    try {
+        const dadosBrutos = fs.readFileSync(filePath, 'utf8');
+        const data = JSON.parse(dadosBrutos);
+        //console.log(dados);
+        return data;
+    } catch (erro) {
+        console.error('Erro ao ler o arquivo:', erro);
+    }
+}
+
+export function updateReview(param, updateData) {
+    try {
+        const data = getAllReviewsForMovie();
+        data.forEach(element => {
+            if (element.title == param) {
+                element.reviewText = updateData;
+            }
+        });
+        const dadosJSON = JSON.stringify(data, null, 2); // 'null' e '2' são usados para formatar o JSON com indentação
+        fs.writeFileSync(filePath, dadosJSON, 'utf8');
+    } catch (erro) {
+        console.error('Erro ao escrever no arquivo:', erro);
+    }
+}
+
+export function deleteReview(title) {
+    try {
+        const data = getAllReviewsForMovie();
+        const index = data.findIndex(element => element.title === title);
+        if (index !== -1) {
+            // Remover o item do array usando splice
+            data.splice(index, 1);
+        }
+        const dadosJSON = JSON.stringify(data, null, 2); // 'null' e '2' são usados para formatar o JSON com indentação
+
+        fs.writeFileSync(filePath, dadosJSON, 'utf8');
+    } catch (erro) {
+        console.error('Erro ao escrever no arquivo:', erro);
+    }
+}
+
+export function addReview(review) {
+    try {
+        const data = getAllReviewsForMovie();
+        data.push(review);
+        //console.log(data);
+        const dadosJSON = JSON.stringify(data, null, 2); // 'null' e '2' são usados para formatar o JSON com indentação
+        fs.writeFileSync(filePath, dadosJSON, 'utf8');
+    } catch (erro) {
+        console.error('Erro ao escrever no arquivo:', erro);
+    }
+}
