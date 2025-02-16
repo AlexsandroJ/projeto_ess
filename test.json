@@ -2,19 +2,11 @@
   {
     "id": 1,
     "title": "Um Sonho de Liberdade",
-    "rating": 5,
-    "reviewText": "Um filme extraordinário!"
-  },
-  {
-    "id": 2,
-    "title": "O Poderoso Chefão",
-    "rating": 5,
-    "reviewText": "Extraordinário"
+    "note": "muito emocionantes"
   },
   {
     "id": 3,
-    "title": "Um Sonho de Liberdade",
-    "rating": 5,
-    "reviewText": "Um filme extraordinário!"
+    "title": "O Cavaleiro das Trevas",
+    "note": "um ótimo filme"
   }
 ]
