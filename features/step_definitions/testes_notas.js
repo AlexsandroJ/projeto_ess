@@ -67,6 +67,13 @@ Given('as seguintes notas do usuario {string} existem:', function (string, dataT
     compareData(dataTableNew, data);
 });
 
+Then('as seguintes notas devem existir:', function (dataTable) {
+    const data = getAllNote(userId);
+    const dataTableNew = dataTable.hashes();
+    console.log(`as seguintes notas devem existir:`);
+    compareData(dataTableNew, data);
+});
+
 When('adiciono uma nova nota para o title {string}, com o seguinte texto {string}', function (string, string2) {
     const data = getAllNote(userId);
     addNote(string,string2);
@@ -96,9 +103,3 @@ When('remover a nota do title {string}', function (string) {
     }
 });
 
-Then('as seguintes notas devem existir:', function (dataTable) {
-    const data = getAllNote(userId);
-    const dataTableNew = dataTable.hashes();
-    console.log(`as seguintes notas devem existir:`);
-    compareData(dataTableNew, data);
-});

@@ -1,6 +1,6 @@
-Feature: Conteudo
+Feature: notas
 
-  Scenario: Adicionar uma note
+  Scenario: Adicionar uma nota
     Given as seguintes notas do usuario "joão" existem:
       | id | title                  | note                           |
       |  1 | Um Sonho de Liberdade  | muito emocionantes             |

@@ -5,7 +5,6 @@ export function getAllNote() {
     try {
         const dadosBrutos = fs.readFileSync(filePath, 'utf8');
         const data = JSON.parse(dadosBrutos);
-        //const data = json.find(element => element.user === useId).notes;
         return data;
     } catch (erro) {
         console.error('Erro ao ler o arquivo:', erro);
@@ -37,7 +36,6 @@ export function updateNote(title, note) {
             }
         });
         const dadosJSON = JSON.stringify(data, null, 2); // 'null' e '2' são usados para formatar o JSON com indentação
-        
         fs.writeFileSync(filePath, dadosJSON, 'utf8');
     } catch (erro) {
         console.error('Erro ao escrever no arquivo:', erro);
@@ -49,7 +47,6 @@ export function deleteNote(title) {
         const data = getAllNote();
         const index = data.findIndex(element => element.title === title);
         if (index !== -1) {
-            // Remover o item do array usando splice
             data.splice(index, 1);
         }
         const dadosJSON = JSON.stringify(data, null, 2); // 'null' e '2' são usados para formatar o JSON com indentação
