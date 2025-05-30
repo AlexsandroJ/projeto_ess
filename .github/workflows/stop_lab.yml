@@ -33,5 +33,5 @@ jobs:
       # Passo 3 : Desligar a Instancia
       - name: Stop EC2 Instance
         run: |
-          aws ec2 stop-instances --instance-ids i-068d63f5f422e2a8b
+          aws ec2 stop-instances --instance-ids i-0bf3914003b413e0c
           echo "Instance stoped successfully."
