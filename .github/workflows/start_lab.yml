@@ -33,13 +33,13 @@ jobs:
       # Passo 3 : Iniciar a Instancia
       - name: Start EC2 Instance
         run: |
-          aws ec2 start-instances --instance-ids i-068d63f5f422e2a8b
+          aws ec2 start-instances --instance-ids i-i-0bf3914003b413e0c
           echo "Instance started successfully."
       # Passo 4: Mostrar o IP 
       - name: Show the public IP address of the machine
         run: |
           PUBLIC_IP=$(aws ec2 describe-instances \
-            --instance-ids i-068d63f5f422e2a8b \
+            --instance-ids i-i-0bf3914003b413e0c \
             --query "Reservations[].Instances[].[PublicIpAddress]" \
             --output text)
           echo "O IP público da instância EC2 é: http://$PUBLIC_IP"
